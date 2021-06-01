@@ -114,21 +114,26 @@ const CreateNew = (props) => {
     info.resetValue();
   };
 
+  const exceptReset = (obj) => {
+    const { resetValue, ...rest } = obj;
+    return rest;
+  };
+
   return (
     <div>
       <h2>create a new anecdote</h2>
       <form onSubmit={handleSubmit}>
         <div>
           content
-          <input {...content} />
+          <input {...exceptReset(content)} />
         </div>
         <div>
           author
-          <input {...author} />
+          <input {...exceptReset(author)} />
         </div>
         <div>
           url for more info
-          <input {...info} />
+          <input {...exceptReset(info)} />
         </div>
         <button type="submit">create</button>
         <button onClick={handleReset}>Reset</button>
